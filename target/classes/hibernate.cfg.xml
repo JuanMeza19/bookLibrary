@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <!-- Dialecto de MySQL (CORREGIDO) -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Configuración de la conexión a MySQL -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">12345678</property>
+        <!-- Mostrar SQL en consola -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <!-- Crear/Actualizar tablas automáticamente -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- Mapeo de Entidades -->
+        <mapping class="models.Usuario"/>
+        <mapping class="models.Renta"/>
+        <mapping class="models.Libro"/>
+        <mapping class="models.Autor"/>
+    </session-factory>
+</hibernate-configuration>
+
+
+
+
+
+
+
