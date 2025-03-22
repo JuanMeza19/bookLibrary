@@ -56,11 +56,20 @@ public class Usuario {
 	public List<Renta> getRentas() {
 		return rentas;
 	}
-
+	
 	public void setRentas(List<Renta> rentas) {
 		this.rentas = rentas;
 	}
     
-    
+	@Override
+	public String toString() {
+	    return "Usuario { " +
+	           "ID=" + id +
+	           ", Nombre='" + nombre + '\'' +
+	           ", Email='" + email + '\'' +
+	           ", Total Rentas=" + (rentas != null ? rentas.size() : 0) +
+	           " }";
+	}
+	
 }
 

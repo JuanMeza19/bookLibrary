@@ -34,22 +34,29 @@ public class Renta {
     @Enumerated(EnumType.STRING)
     private EstadoRenta estado = EstadoRenta.ACTIVA;
 
-    public Renta(Usuario usuario, Libro libro, LocalDate fechaRenta, LocalDate fechaDevolucion, BigDecimal multa, EstadoRenta estado) {
+    public Renta() {}
+    
+    public Renta(Usuario usuario, Libro libro ) {
 		super();
 		this.usuario = usuario;
 		this.libro = libro;
-		this.fechaRenta = fechaRenta;
-		this.fechaDevolucion = fechaDevolucion;
-		this.multa = multa;
-		this.estado = estado;
+		calcularFechaDevolucion();
+		calcularMulta();
 	}
 
 	public void calcularMulta() {
         if (estado == EstadoRenta.ACTIVA && LocalDate.now().isAfter(fechaRenta.plusDays(diasRenta))) {
             long diasRetraso = ChronoUnit.DAYS.between(fechaRenta.plusDays(diasRenta), LocalDate.now());
-            multa = BigDecimal.valueOf(diasRetraso * 5.50); // $5.50 por día de retraso
+            this.multa = BigDecimal.valueOf(diasRetraso * 5.50);
         }
     }
+	
+	public void calcularFechaDevolucion() {
+	    if (fechaRenta != null && diasRenta > 0) {
+	        this.fechaDevolucion = fechaRenta.plusDays(diasRenta);
+	    }
+	}
+
 	
 	public Long getId() {
 		return id;

@@ -138,9 +138,20 @@ public class booksGUI extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Adquirir");
 		mnNewMenu_2.add(mntmNewMenuItem_2);
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		    	createRenta renta = new  createRenta(); 
+		    	
+		        contentPane.removeAll();
+		        contentPane.add(menuBar);
+		        contentPane.add(renta);
+		        
+		        contentPane.revalidate();
+		        contentPane.repaint();
+		    }
+		});
 		
 		createClient cliente = new createClient();
 		contentPane.add(cliente);
-		
 	}
 }

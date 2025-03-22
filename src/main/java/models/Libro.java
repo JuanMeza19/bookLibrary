@@ -34,7 +34,9 @@ public class Libro {
     
     @OneToMany(mappedBy = "libro")
     private List<Renta> rentas = new ArrayList<>();
-
+    
+    public Libro() {}
+    
     /**
      * Constructor de la clase Libro.
      * 
